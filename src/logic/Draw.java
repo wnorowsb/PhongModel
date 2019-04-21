@@ -13,7 +13,7 @@ public class Draw extends JPanel{
         d=new Dimension(500,500);
         this.setMinimumSize(d);
         this.setPreferredSize(d);
-        this.setMaximumSize(d);;
+        this.setMaximumSize(d);
         this.setMaximumSize(d);
         this.setVisible(true);
         sphere = new Sphere(10000);

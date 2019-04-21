@@ -16,7 +16,6 @@ public class Sphere {
         }
     }
 
-
     public ArrayList<Point> getPoints() {
         return points;
     }
