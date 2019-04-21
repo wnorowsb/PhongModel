@@ -27,12 +27,21 @@ public class Draw extends JPanel{
         int Ox=200;
         int Oy =200;
         int r = 10000;
+        Vector c;
+        Color color;
         points = sphere.getPoints();
-        points.forEach((point) -> {
+        for (Point point : points) {
+            if(point.getL().dotProduct(point.getN()) > 0){
+            c = sphere.getKd().multiplyV(point.getLight().getLightColor()).multiplyS(point.getL().dotProduct(point.getN()));
+            color = new Color((int) c.getX(), (int) c.getY(), (int) c.getZ());
+            //System.out.println(c.getX()+" "+c.getY()+" "+c.getZ());
+            }
+            else color=new Color(0,0,0);
+            g.setColor(color);
             g.drawRect(Ox - point.getX(), Oy - point.getY(), 1, 1);
-        });
-
         }
+
+    }
 
 
 }

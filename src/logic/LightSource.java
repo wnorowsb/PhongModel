@@ -2,11 +2,17 @@ package logic;
 
 public class LightSource {
     private int x,y,z;
+    private Vector lightColor;
 
-    public LightSource(int x,int y, int z){
+    public Vector getLightColor() {
+        return lightColor;
+    }
+
+    public LightSource(int x, int y, int z){
         this.x=x;
         this.y=y;
         this.z=z;
+        lightColor= new Vector(255,255,255);
     }
 
     public int getX() {
