@@ -2,7 +2,6 @@ package logic;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
-import static java.lang.Math.*;
 
 public class Draw extends JPanel{
     private Dimension d;
@@ -27,7 +26,6 @@ public class Draw extends JPanel{
         this.repaint();
     }
 
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.red);
@@ -40,8 +38,5 @@ public class Draw extends JPanel{
             g.setColor(pixel.getColor());
             g.drawRect(Ox - pixel.getX(), Oy - pixel.getY(), 1, 1);
         }
-
     }
-
-
 }
