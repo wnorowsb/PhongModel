@@ -2,6 +2,15 @@ package logic;
 
 public class Vector {
     private double x,y,z;
+
+    @Override
+    public String toString() {
+        return  "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
+
     public Vector(double x, double y, double z){
         this.x=x;
         this.y=y;
@@ -23,6 +32,10 @@ public class Vector {
 
     public Vector minus (Vector v){
         return new Vector(this.x - v.getX(), this.y - v.getY(), this.z - v.getZ());
+    }
+
+    public Vector plus (Vector v){
+        return new Vector(this.x + v.getX(), this.y + v.getY(), this.z + v.getZ());
     }
 
     public Vector multiplyV(Vector v){

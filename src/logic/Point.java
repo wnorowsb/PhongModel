@@ -35,8 +35,10 @@ public class Point {
         length=sqrt((x*x) + (y*y) + (z*z));
         this.n = new Vector(x/length, y/length, z/length);
 
-        length=sqrt((x*x) + (y*y) + ((z+400)*(z+400)));
-        this.v = new Vector((-1)*x/length, (-1)*y/length, (-1)*(z+400)/length);
+        length=sqrt((x*x) + (y*y) + ((z+100)*(z+100)));
+        this.v = new Vector(x/length, y/length, (z+100)/length);
+        System.out.println(v);
+        System.out.println(n);
 
         length=sqrt( Math.pow(light.getX() - x, 2) + Math.pow(light.getY() - y, 2) + Math.pow(light.getZ() - z, 2));
         this.l = new Vector((light.getX() - x)/length ,(light.getY() - y)/length ,(light.getZ() - z)/length);

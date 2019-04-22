@@ -27,12 +27,15 @@ public class Draw extends JPanel{
         int Ox=200;
         int Oy =200;
         int r = 10000;
-        Vector c;
+        Vector c,diff,spec;
         Color color;
         points = sphere.getPoints();
         for (Point point : points) {
             if(point.getL().dotProduct(point.getN()) > 0){
-            c = sphere.getKd().multiplyV(point.getLight().getLightColor()).multiplyS(point.getL().dotProduct(point.getN()));
+            diff = sphere.getKd().multiplyV(point.getLight().getLightColor()).multiplyS(point.getL().dotProduct(point.getN()));
+            spec = sphere.getKs().multiplyV(point.getLight().getLightColor()).multiplyS(Math.pow(max(0.0,point.getR().dotProduct(point.getV())),sphere.getN()));
+            //System.out.println(spec);
+            c=spec.plus(diff);
             color = new Color((int) c.getX(), (int) c.getY(), (int) c.getZ());
             //System.out.println(c.getX()+" "+c.getY()+" "+c.getZ());
             }
