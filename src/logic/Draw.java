@@ -6,8 +6,11 @@ import static java.lang.Math.*;
 
 public class Draw extends JPanel{
     private Dimension d;
-    private ArrayList<Point> points = new ArrayList<Point>();
-    private Sphere sphere;
+    private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
+
+    public void setPixels(ArrayList<Pixel> pixels) {
+        this.pixels = pixels;
+    }
 
     public Draw(){
         d=new Dimension(500,500);
@@ -16,32 +19,20 @@ public class Draw extends JPanel{
         this.setMaximumSize(d);
         this.setMaximumSize(d);
         this.setVisible(true);
-        sphere = new Sphere(10000);
     }
 
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.red);
-        int z;
+
         int Ox=200;
         int Oy =200;
-        int r = 10000;
-        Vector c,diff,spec;
-        Color color;
-        points = sphere.getPoints();
-        for (Point point : points) {
-            if(point.getL().dotProduct(point.getN()) > 0){
-            diff = sphere.getKd().multiplyV(point.getLight().getLightColor()).multiplyS(point.getL().dotProduct(point.getN()));
-            spec = sphere.getKs().multiplyV(point.getLight().getLightColor()).multiplyS(Math.pow(max(0.0,point.getR().dotProduct(point.getV())),sphere.getN()));
-            //System.out.println(spec);
-            c=spec.plus(diff);
-            color = new Color((int) c.getX(), (int) c.getY(), (int) c.getZ());
-            //System.out.println(c.getX()+" "+c.getY()+" "+c.getZ());
-            }
-            else color=new Color(0,0,0);
-            g.setColor(color);
-            g.drawRect(Ox - point.getX(), Oy - point.getY(), 1, 1);
+
+
+        for (Pixel pixel : pixels) {
+            g.setColor(pixel.getColor());
+            g.drawRect(Ox - pixel.getX(), Oy - pixel.getY(), 1, 1);
         }
 
     }
