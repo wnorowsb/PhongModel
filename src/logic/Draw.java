@@ -21,6 +21,12 @@ public class Draw extends JPanel{
         this.setVisible(true);
     }
 
+    public void actualize(){
+        this.removeAll();
+        this.revalidate();
+        this.repaint();
+    }
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
